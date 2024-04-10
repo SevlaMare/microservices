@@ -6,8 +6,16 @@
 `nest g controller users`  
 `nest g service users`
 
+all together  
+`nest g resource users`
+
+### new resource
+
 check  
 `localhost:3000/users`
 
-create a route  
+route add on:  
 /users.service.ts
+
+create interface:  
+src/user/interfaces/
