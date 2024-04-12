@@ -12,20 +12,19 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('users') // prefix all routes
+@Controller('users')
 export class UsersController {
-  // inject methods from services.
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  // call a method from service.
   create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+    // return this.usersService.create(createUserDto);
+    return createUserDto.name;
   }
 
   // QUERY PARAM
   @Get()
-  findAll(@Query('kind') type: string) {
+  findAll(@Query('kind') type: 'knifu') {
     // return this.usersService.findAll();
     return [{ type }];
   }
@@ -38,6 +37,7 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
+  // patch for partiall update / put is full
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
